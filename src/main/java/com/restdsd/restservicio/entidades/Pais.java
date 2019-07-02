@@ -15,8 +15,8 @@ public class Pais implements Serializable {
     @Column(unique = true)
     private String pa_nombre;
 
-    @OneToMany(mappedBy = "ci_pais", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Ciudad> pa_ciudades;
+    @OneToMany(mappedBy = "pais", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Ciudad> ciudades;
 
     public Long getIdpais() {
         return idpais;
@@ -34,11 +34,11 @@ public class Pais implements Serializable {
         this.pa_nombre = pa_nombre;
     }
 
-    public List<Ciudad> getPa_ciudades() {
-        return pa_ciudades;
+    public List<Ciudad> getCiudades() {
+        return ciudades;
     }
 
-    public void setPa_ciudades(List<Ciudad> pa_ciudades) {
-        this.pa_ciudades = pa_ciudades;
+    public void setCiudades(List<Ciudad> ciudades) {
+        this.ciudades = ciudades;
     }
 }

@@ -25,6 +25,20 @@ public class PaisController {
         return negocioPais.listaPais();
     }
 
+    @GetMapping("/pais")
+    public Pais consultaPais(@RequestParam(value="idPais") Long idpa){
+        Pais p;
+        try{
+            p = negocioPais.obtenerPais(idpa);
+        }catch (Exception e)
+        {
+            logger.error("Error de busqueda", e);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No es posible encontrar el pais");
+        }
+
+        return p;
+    }
+
     @PostMapping("/pais")
     public Pais crearPais(@RequestBody Pais pais){
         Pais p;

@@ -24,7 +24,7 @@ public class NegocioRentaCarro {
     public RentaCarro actualizaRentaCarro(RentaCarro rentaCarro) throws Exception{
         RentaCarro rc = rentaCarroRepositorio.findById(rentaCarro.getIdrentacarro()).orElseThrow(() -> new Exception("No existe el Carro"));
 
-        rc.setRc_destinos(rentaCarro.getRc_destinos());
+        rc.setDestino(rentaCarro.getDestino());
         rc.setRc_titulo(rentaCarro.getRc_titulo());
         rc.setRc_descripcioncorta(rentaCarro.getRc_descripcioncorta());
         rc.setRc_descripcionlarga(rentaCarro.getRc_descripcionlarga());

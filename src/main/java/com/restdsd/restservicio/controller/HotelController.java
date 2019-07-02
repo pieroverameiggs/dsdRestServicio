@@ -1,5 +1,6 @@
 package com.restdsd.restservicio.controller;
 
+import com.restdsd.restservicio.entidades.Destino;
 import com.restdsd.restservicio.entidades.Hotel;
 import com.restdsd.restservicio.negocio.NegocioHotel;
 import org.slf4j.Logger;
@@ -24,9 +25,12 @@ public class HotelController {
     }
 
     @PostMapping("/hotel")
-    public Hotel crearHotel(@RequestBody Hotel hotel){
+    public Hotel crearHotel(@RequestBody Hotel hotel, @RequestParam(value="idDestino") Long idde){
         Hotel h;
+        Destino d = new Destino();
+        d.setIddestino(idde);
         logger.debug("Creando Hotel");
+        hotel.setDestino(d);
         h = negocioHotel.registrarHotel(hotel);
         return h;
     }

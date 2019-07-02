@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_destino")
@@ -40,6 +41,28 @@ public class Destino implements Serializable {
     private Timestamp de_regiserDate;
     private int de_userUpdate;
     private Timestamp de_registerUpdate;
+
+    @OneToMany(mappedBy = "destino", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Hotel> hoteles;
+
+    @OneToMany(mappedBy = "destino", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<RentaCarro> rentaCarros;
+
+    public List<RentaCarro> getRentaCarros() {
+        return rentaCarros;
+    }
+
+    public void setRentaCarros(List<RentaCarro> rentaCarros) {
+        this.rentaCarros = rentaCarros;
+    }
+
+    public List<Hotel> getHoteles() {
+        return hoteles;
+    }
+
+    public void setHoteles(List<Hotel> hoteles) {
+        this.hoteles = hoteles;
+    }
 
     public Long getIddestino() {
         return iddestino;

@@ -23,7 +23,7 @@ public class NegocioHotel {
     public Hotel actualizaHotel(Hotel hotel) throws Exception{
         Hotel h = hotelRepositorio.findById(hotel.getIdhotel()).orElseThrow(() -> new Exception("No existe el hotel"));
 
-        h.setHo_destinos(hotel.getHo_destinos());
+        h.setDestino(hotel.getDestino());
         h.setHo_titulo(hotel.getHo_titulo());
         h.setHo_descripcioncorta(hotel.getHo_descripcioncorta());
         h.setHo_descripcionlarga(hotel.getHo_descripcionlarga());

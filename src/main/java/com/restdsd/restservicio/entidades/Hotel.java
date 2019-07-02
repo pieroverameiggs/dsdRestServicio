@@ -16,11 +16,10 @@ public class Hotel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdHotel")
     private Long idhotel;
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "IdDestino")
     @JsonIgnore
-    private List<Destino> ho_destinos;
-
+    private Destino destino;
     private String ho_titulo;
     private String ho_descripcioncorta;
     private String ho_descripcionlarga;
@@ -39,14 +38,6 @@ public class Hotel implements Serializable {
 
     public void setIdhotel(Long idhotel) {
         this.idhotel = idhotel;
-    }
-
-    public List<Destino> getHo_destinos() {
-        return ho_destinos;
-    }
-
-    public void setHo_destinos(List<Destino> ho_destinos) {
-        this.ho_destinos = ho_destinos;
     }
 
     public String getHo_titulo() {
@@ -136,4 +127,13 @@ public class Hotel implements Serializable {
     public void setDe_registerUpdate(Timestamp de_registerUpdate) {
         this.de_registerUpdate = de_registerUpdate;
     }
+
+    public Destino getDestino() {
+        return destino;
+    }
+
+    public void setDestino(Destino destino) {
+        this.destino = destino;
+    }
+
 }

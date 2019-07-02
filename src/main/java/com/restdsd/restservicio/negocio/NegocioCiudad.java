@@ -13,8 +13,8 @@ public class NegocioCiudad {
     @Autowired
     private CiudadRepositorio ciudadRepositorio;
 
-    public Ciudad registrarCiudad(Pais pais, Ciudad ciudad){
-        ciudad.setCi_pais(pais);
+    public Ciudad registrarCiudad(Ciudad ciudad){
+        //ciudad.setPais(pais);
         return ciudadRepositorio.save(ciudad);
     }
 
@@ -26,7 +26,7 @@ public class NegocioCiudad {
         Long idCiudad = ciudad.getIdciudad();
         Ciudad c = ciudadRepositorio.findById(idCiudad).orElseThrow(() -> new Exception("No existe la ciudad"));
 
-        c.setCi_pais(ciudad.getCi_pais());
+        c.setPais(ciudad.getPais());
         c.setCi_nombre(ciudad.getCi_nombre());
         return ciudadRepositorio.save(c);
     }

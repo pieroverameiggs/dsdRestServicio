@@ -23,7 +23,7 @@ public class NegocioTarifario {
     public Tarifario actualizaTarifario(Tarifario tarifario) throws Exception{
         Tarifario t = tarifarioRepositorio.findById(tarifario.getIdtarifario()).orElseThrow(() -> new Exception("No existe tarifa"));
 
-        t.setTa_tiposervicio(tarifario.getTa_tiposervicio());
+        t.setTa_idtiposervicio(tarifario.getTa_idtiposervicio());
         t.setTa_idregistroservicio(tarifario.getTa_idregistroservicio());
         t.setTa_idproveedor(tarifario.getTa_idproveedor());
         t.setTa_precio(tarifario.getTa_precio());

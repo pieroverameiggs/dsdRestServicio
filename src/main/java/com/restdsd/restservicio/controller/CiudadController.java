@@ -1,7 +1,9 @@
 package com.restdsd.restservicio.controller;
 
 import com.restdsd.restservicio.entidades.Ciudad;
+import com.restdsd.restservicio.entidades.Pais;
 import com.restdsd.restservicio.negocio.NegocioCiudad;
+import com.restdsd.restservicio.negocio.NegocioPais;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import java.util.List;
 public class CiudadController {
     @Autowired
     private NegocioCiudad negocioCiudad;
+    private NegocioPais negocioPais;
 
     Logger logger = LoggerFactory.getLogger(CiudadController.class);
 
@@ -25,10 +28,24 @@ public class CiudadController {
     }
 
     @PostMapping("/ciudad")
-    public Ciudad crearCiudad(@RequestBody Ciudad ciudad){
+    public Ciudad crearCiudad(@RequestBody Ciudad ciudad, @RequestParam(value="idPais") Long idpa){
         Ciudad c;
-        logger.debug("Creando Ciudad");
-        c = negocioCiudad.registrarCiudad(ciudad.getCi_pais(), ciudad);
+        try{
+            logger.debug("Creando Ciudad");
+            //logger.debug("El idPais es: " + ciudad.getPais().getIdpais().toString());
+            Pais p = new Pais();
+            logger.debug("idpais: " + idpa.toString());
+            p.setIdpais(idpa);
+            //p = negocioPais.obtenerPais(idpa);
+            ciudad.setPais(p);
+
+            c = negocioCiudad.registrarCiudad(ciudad);
+        }catch (Exception e){
+            logger.error("Error de grabado", e);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No es posible realizar el grabado");
+        }
+
+
         return c;
     }
 

@@ -1,6 +1,7 @@
 package com.restdsd.restservicio.controller;
 
 
+import com.restdsd.restservicio.entidades.Destino;
 import com.restdsd.restservicio.entidades.RentaCarro;
 import com.restdsd.restservicio.negocio.NegocioRentaCarro;
 import org.slf4j.Logger;
@@ -25,9 +26,12 @@ public class RentaCarroController {
     }
 
     @PostMapping("/rentacarro")
-    public RentaCarro crearRentaCarro(@RequestBody RentaCarro rentaCarro){
+    public RentaCarro crearRentaCarro(@RequestBody RentaCarro rentaCarro, @RequestParam(value="idDestino") Long idde){
         RentaCarro rc;
+        Destino d = new Destino();
+        d.setIddestino(idde);
         logger.debug("Creando Carro");
+        rentaCarro.setDestino(d);
         rc = negocioRentaCarro.registrarRentaCarro(rentaCarro);
         return rc;
     }

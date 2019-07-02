@@ -1,7 +1,9 @@
 package com.restdsd.restservicio.controller;
 
 
+import com.restdsd.restservicio.entidades.Ciudad;
 import com.restdsd.restservicio.entidades.Destino;
+import com.restdsd.restservicio.entidades.Pais;
 import com.restdsd.restservicio.negocio.NegocioDestino;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,9 +27,18 @@ public class DestinoController {
     }
 
     @PostMapping("/destino")
-    public Destino crearDestino(@RequestBody Destino destino){
+    public Destino crearDestino(@RequestBody Destino destino, @RequestParam(value="idPais") Long idpa, @RequestParam(value="idCiudad") Long idciu){
         Destino d;
+        Pais p = new Pais();
+        p.setIdpais(idpa);
+
+        Ciudad c = new Ciudad();
+        c.setIdciudad(idciu);
+
         logger.debug("Creando Destino");
+        destino.setDe_pais(p);
+        destino.setDe_ciudad(c);
+
         d = negocioDestino.registrarDestino(destino);
         return d;
     }

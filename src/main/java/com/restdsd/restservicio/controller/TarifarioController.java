@@ -26,7 +26,7 @@ public class TarifarioController {
     @PostMapping("/tarifario")
     public Tarifario crearTarifario(@RequestBody Tarifario tarifario){
         Tarifario t;
-        logger.debug("Creando Tarifario");
+        logger.debug("Creando Tarifario, IDTipoServ:" + tarifario.getTa_idtiposervicio().toString());
         t = negocioTarifario.registrarTarifario(tarifario);
         return t;
     }

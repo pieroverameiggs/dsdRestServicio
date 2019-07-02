@@ -16,10 +16,10 @@ public class RentaCarro implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdRentaCarro")
     private Long idrentacarro;
-    @ManyToMany
+    @ManyToOne
     @JoinColumn(name = "IdDestino")
     @JsonIgnore
-    private List<Destino> rc_destinos;
+    private Destino destino;
 
     private String rc_titulo;
     private String rc_descripcioncorta;
@@ -32,20 +32,21 @@ public class RentaCarro implements Serializable {
     private Long de_userUpdate;
     private Timestamp de_registerUpdate;
 
+
+    public Destino getDestino() {
+        return destino;
+    }
+
+    public void setDestino(Destino destino) {
+        this.destino = destino;
+    }
+
     public Long getIdrentacarro() {
         return idrentacarro;
     }
 
     public void setIdrentacarro(Long idrentacarro) {
         this.idrentacarro = idrentacarro;
-    }
-
-    public List<Destino> getRc_destinos() {
-        return rc_destinos;
-    }
-
-    public void setRc_destinos(List<Destino> rc_destinos) {
-        this.rc_destinos = rc_destinos;
     }
 
     public String getRc_titulo() {

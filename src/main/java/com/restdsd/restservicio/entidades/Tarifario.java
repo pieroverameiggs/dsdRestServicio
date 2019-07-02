@@ -15,10 +15,11 @@ public class Tarifario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "IdTarifario")
     private Long idtarifario;
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "IdTipoServicio")
     @JsonIgnore
-    private TipoServicio ta_tiposervicio;
+    private TipoServicio ta_tiposervicio;*/
+    private Long ta_idtiposervicio;
     private Long ta_idregistroservicio;
     private Long ta_idproveedor;
     private Double ta_precio;
@@ -33,14 +34,6 @@ public class Tarifario implements Serializable {
 
     public void setIdtarifario(Long idtarifario) {
         this.idtarifario = idtarifario;
-    }
-
-    public TipoServicio getTa_tiposervicio() {
-        return ta_tiposervicio;
-    }
-
-    public void setTa_tiposervicio(TipoServicio ta_tiposervicio) {
-        this.ta_tiposervicio = ta_tiposervicio;
     }
 
     public Long getTa_idregistroservicio() {
@@ -97,5 +90,13 @@ public class Tarifario implements Serializable {
 
     public void setDe_registerUpdate(Timestamp de_registerUpdate) {
         this.de_registerUpdate = de_registerUpdate;
+    }
+
+    public Long getTa_idtiposervicio() {
+        return ta_idtiposervicio;
+    }
+
+    public void setTa_idtiposervicio(Long ta_idtiposervicio) {
+        this.ta_idtiposervicio = ta_idtiposervicio;
     }
 }

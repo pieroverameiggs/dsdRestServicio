@@ -17,8 +17,8 @@ public class Ciudad implements Serializable {
     @ManyToOne
     @JoinColumn(name = "IdPais")
     @JsonIgnore
-    private Pais ci_pais;
-
+    private Pais pais;
+    
     public Long getIdciudad() {
         return idciudad;
     }
@@ -35,11 +35,11 @@ public class Ciudad implements Serializable {
         this.ci_nombre = ci_nombre;
     }
 
-    public Pais getCi_pais() {
-        return ci_pais;
+    public Pais getPais() {
+        return pais;
     }
 
-    public void setCi_pais(Pais ci_pais) {
-        this.ci_pais = ci_pais;
+    public void setPais(Pais pais) {
+        this.pais = pais;
     }
 }
